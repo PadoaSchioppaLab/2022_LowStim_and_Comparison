@@ -12,19 +12,25 @@ This repository contains data and analysis codes based on Matlab (v2016b). Matla
 <br>
 <br>
 	
-In this respiratory, there are files of:
+In this respiratory, there are folders of:
 
-source_data: xlsx files for the data of each figure 
+% source_data: xlsx files for the data of each figure 
 
-codes_and_data: xlsx files for the raw data, and analysis codes to generate each figure
-  
-    session_info.xlsx: summary of the information of each session
-    session_detailed_data.xlsx: complete behavioral data for all the trials (error trials were removed)
-    <br>
-    plot_generator_allcurrent.m: analysis code to generate figure 1BC, figure 2 and figure S1. The code uses data from session_info.xlsx and session_detailed_data.xlsx
-    plot_generator_allcurrent_RT_errate.m: analysis code to generate figure 3. The code uses data from session_info.xlsx and session_detailed_data.xlsx
-    plot_generator_allcurrent_hysteresis_and_bias.m: analysis code to generate figure 4. The code uses data from session_info.xlsx and session_detailed_data.xlsx
-    FigSummary_plot_generator_allcurrent.m: analysis code to generate figure 5. The code uses data from session_info.xlsx and session_detailed_data.xlsx
+codes_and_data: xlsx files for the raw data, and analysis codes to generate each figure. In this folders, there are: 
+
+session_info.xlsx: summary of the information of each session
+
+session_detailed_data.xlsx: complete behavioral data for all the trials (error trials were removed)
+
+<br>
+
+plot_generator_allcurrent.m: analysis code to generate figure 1BC, figure 2 and figure S1. The code uses data from session_info.xlsx and session_detailed_data.xlsx
+
+plot_generator_allcurrent_RT_errate.m: analysis code to generate figure 3. The code uses data from session_info.xlsx and session_detailed_data.xlsx
+	
+plot_generator_allcurrent_hysteresis_and_bias.m: analysis code to generate figure 4. The code uses data from session_info.xlsx and session_detailed_data.xlsx
+
+FigSummary_plot_generator_allcurrent.m: analysis code to generate figure 5. The code uses data from session_info.xlsx and session_detailed_data.xlsx
     
 
   
