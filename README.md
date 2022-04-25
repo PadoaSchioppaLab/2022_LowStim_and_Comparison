@@ -16,7 +16,7 @@ In this respiratory, there are folders of:
 
 source_data: xlsx files for the data of each figure 
 
-codes_and_data: xlsx files for the raw data, and analysis codes to generate each figure. In this folders, there are: 
+codes_and_data: xlsx files for the raw data, and analysis codes to generate each figure. In this folder, there are: 
 
 session_info.xlsx: summary of the information of each session
 
