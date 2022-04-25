@@ -64,8 +64,7 @@ parsup=[  limlow1  limlow1  ];     % use 1uA  as lower boundary to choose target
 
 nplot=numel(paroff);
 %
-% for k=1:2 % 2: two analysis target - raction time; error rate
-for k=1:6 % 6: two analysis target - error rate 1 2 3 4 5 6
+for k=1:2 % 2: two analysis target - raction time; error rate
 	for n=1:numel(paroff)
 		% mask contains index for target sessions
         if ~isempty(monkeyname)
@@ -81,58 +80,22 @@ for k=1:6 % 6: two analysis target - error rate 1 2 3 4 5 6
         % load data accordingly
 		try
 			switch k				
-%                 case 1
-% 					tit={'Error rates'};
-% 					data=[ info.errRate_OFF info.errRate_ON ];
-%                 case 2
-% 					tit={'RTime'};
-% 					data=[ info.RT_OFF info.RT_ON ];
                 case 1
-					tit={'Error rates (no saccade)'};
-					data=[ info.err1Rate_OFF info.err1Rate_ON ];
+					tit={'Error rates'};
+					data=[ info.errRate_OFF info.errRate_ON ];
                 case 2
-					tit={'Error rates (too slow response)'};
-					data=[ info.err2Rate_OFF info.err2Rate_ON ];
-                case 3
-					tit={'Error rates (break fixation)'};
-					data=[ info.err3Rate_OFF info.err3Rate_ON ];
-                case 4
-					tit={'Error rates (no initiation)'};
-					data=[ info.err4Rate_OFF info.err4Rate_ON ];
-                case 5
-					tit={'Error rates (too fast response)'};
-					data=[ info.err5Rate_OFF info.err5Rate_ON ];
-                case 6
-					tit={'Error rates (incorrect choice)'};
-					data=[ info.err6Rate_OFF info.err6Rate_ON ];
+					tit={'RTime'};
+					data=[ info.RT_OFF info.RT_ON ];               
 			end
 		catch
 			[info,~] = probitLink_regression_RT_errate(alldata, info);
 			switch k
-%                 case 1
-% 					tit={'Error rates'};
-% 					data=[ info.errRate_OFF info.errRate_ON ];
-%                 case 2
-% 					tit={'RTime'};
-% 					data=[ info.RT_OFF info.RT_ON ];
                 case 1
-					tit={'Error rates (no saccade)'};
-					data=[ info.err1Rate_OFF info.err1Rate_ON ];
+					tit={'Error rates'};
+					data=[ info.errRate_OFF info.errRate_ON ];
                 case 2
-					tit={'Error rates (too slow response)'};
-					data=[ info.err2Rate_OFF info.err2Rate_ON ];
-                case 3
-					tit={'Error rates (break fixation)'};
-					data=[ info.err3Rate_OFF info.err3Rate_ON ];
-                case 4
-					tit={'Error rates (no initiation)'};
-					data=[ info.err4Rate_OFF info.err4Rate_ON ];
-                case 5
-					tit={'Error rates (too fast response)'};
-					data=[ info.err5Rate_OFF info.err5Rate_ON ];
-                case 6
-					tit={'Error rates (incorrect choice)'};
-					data=[ info.err6Rate_OFF info.err6Rate_ON ];
+					tit={'RTime'};
+					data=[ info.RT_OFF info.RT_ON ];             
 			end
 		end
 		% find the limits for two axes for plotting
@@ -168,8 +131,7 @@ for k=1:6 % 6: two analysis target - error rate 1 2 3 4 5 6
 end
 %
 % statistical analysis
-% for k=1:2
-for k=1:6 % 6: two analysis target - error rate 1 2 3 4 5 6
+for k=1:2
 	for n=1:numel(paroff)
         if ~isempty(monkeyname)
             mask_monkey = ismember(info.monkey,monkeyname);
@@ -179,30 +141,12 @@ for k=1:6 % 6: two analysis target - error rate 1 2 3 4 5 6
 		mask=(info.StimOffer(:,1)==paroff(n) & info.StimCurrent>=parsup(n) & info.StimCurrent<parinf(n));
         mask = mask & mask_monkey; 
 		switch k		
-%             case 1
-%                 tit={'Error rates'};
-%                 data=[ info.errRate_OFF info.errRate_ON ];
-%             case 2
-%                 tit={'RTime'};
-%                 data=[ info.RT_OFF info.RT_ON ];
             case 1
-					tit={'Error rates (no saccade)'};
-					data=[ info.err1Rate_OFF info.err1Rate_ON ];
-                case 2
-					tit={'Error rates (too slow response)'};
-					data=[ info.err2Rate_OFF info.err2Rate_ON ];
-                case 3
-					tit={'Error rates (break fixation)'};
-					data=[ info.err3Rate_OFF info.err3Rate_ON ];
-                case 4
-					tit={'Error rates (no initiation)'};
-					data=[ info.err4Rate_OFF info.err4Rate_ON ];
-                case 5
-					tit={'Error rates (too fast response)'};
-					data=[ info.err5Rate_OFF info.err5Rate_ON ];
-                case 6
-					tit={'Error rates (incorrect choice)'};
-					data=[ info.err6Rate_OFF info.err6Rate_ON ];
+                tit={'Error rates'};
+                data=[ info.errRate_OFF info.errRate_ON ];
+            case 2
+                tit={'RTime'};
+                data=[ info.RT_OFF info.RT_ON ];           
 		end
 		% only looks at target sessions
 		data=data(mask,:);

@@ -16,15 +16,6 @@ clearvars
 info=cell2table(Exp1_info(2:end,:),'VariableNames',Exp1_info(1,:));
 alldata=cell2table(Exp1_data(2:end,:),'VariableNames',Exp1_data(1,:));
 
-%
-% highlight new sessions
-monkey = 'Juan'; % 'Gervinho'; 'Juan'; 'both'
-eval(['sessionlist_',monkey]);
-newsessions = [];
-for isess = 1:length(sessions)
-    newsessions{isess,1} = sessions{isess}(2:end);
-end
-plotnewsessions = 0;
 
 % example session
 plotexamplesession = 1;
@@ -32,7 +23,7 @@ examplesession = {'180102b', '171205c'}; % '171205c' % for offer2
 exampletitle = {'offer1, \leq15\muA', 'offer2, \leq15\muA'}; 
 
 % monkey target
-monkeyname = ''; % 'G', 'J', '' (both)
+monkeyname = 'J'; % 'G', 'J', '' (both)
 
 doremoveoutlier = 0;
 % different definition of hysteresis
@@ -91,9 +82,7 @@ for k=1:3 % 3: three analysis target - relative value, steepness and order bias
         if plotexamplesession
             ind_exam = ismember(info.session(mask),examplesession);
         end
-        if plotnewsessions
-           ind_newsess =  ismember(info.session(mask),newsessions);
-        end
+
         % load data accordingly
 		try
 			switch k
@@ -166,9 +155,7 @@ for k=1:3 % 3: three analysis target - relative value, steepness and order bias
         if plotexamplesession
             plot(data(ind_exam,1),data(ind_exam,2),'ko','MarkerSize',8,'MarkerFaceColor',[0.4 0.6 0.4]);
         end
-        if plotnewsessions
-            plot(data(ind_newsess,1),data(ind_newsess,2),'ko','MarkerSize',8,'MarkerFaceColor',[0.5 0.5 0.0]);
-        end
+
         plot(limi(k,:),limi(k,:),'k--','HandleVisibility','off','LineWidth',1);
 		axis ([limi(k,:), limi(k,:)])
 		axis square
