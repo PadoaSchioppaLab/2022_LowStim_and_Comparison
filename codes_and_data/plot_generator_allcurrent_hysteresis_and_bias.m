@@ -366,11 +366,11 @@ for isession = 1:nsessions
     tr_chosenR  = trialNum(ind_chosenR,1); % trialnum of choosing right
     trialNum_AR = trialNum(sides== 1,:);
     trialNum_AL = trialNum(sides==-1,:);
+    trialNum_sameA = [trialNum_AL(ismember(trialNum_AL,tr_chosenL+1)); trialNum_AR(ismember(trialNum_AR,tr_chosenR+1))];
+    trialNum_sameB = [trialNum_AL(ismember(trialNum_AL,tr_chosenR+1)); trialNum_AR(ismember(trialNum_AR,tr_chosenL+1))];    
     PoHyst = zeros(size(trialNum));
-    PoHyst(ismember(trialNum_AL,tr_chosenL+1)) = -1; 
-    PoHyst(ismember(trialNum_AR,tr_chosenR+1)) = -1; 
-    PoHyst(ismember(trialNum_AL,tr_chosenR+1)) = 1; 
-    PoHyst(ismember(trialNum_AR,tr_chosenL+1)) = 1; 
+    PoHyst(ismember(trialNum,trialNum_sameA+1)) = -1; 
+    PoHyst(ismember(trialNum,trialNum_sameB+1)) = 1; 
 	%
 	% logistic regression
 	% for stimOFF
@@ -413,11 +413,11 @@ for isession = 1:nsessions
     tr_chosen2  = trialNum(ind_chosen2,1);
     trialNum_A1 = trialNum(order== 1,:);
     trialNum_A2 = trialNum(order==-1,:);
+    trialNum_sameA = [trialNum_A1(ismember(trialNum_A1,tr_chosen1+1)); trialNum_A2(ismember(trialNum_A2,tr_chosen2+1))];
+    trialNum_sameB = [trialNum_A1(ismember(trialNum_A1,tr_chosen2+1)); trialNum_A2(ismember(trialNum_A2,tr_chosen1+1))];       
     OrHyst = zeros(size(trialNum));
-    OrHyst(ismember(trialNum_A1,tr_chosen1+1)) = -1; 
-    OrHyst(ismember(trialNum_A2,tr_chosen2+1)) = -1; 
-    OrHyst(ismember(trialNum_A1,tr_chosen2+1)) =  1; 
-    OrHyst(ismember(trialNum_A2,tr_chosen1+1)) =  1; 
+    OrHyst(ismember(trialNum_A1,trialNum_sameA+1)) = -1; 
+    OrHyst(ismember(trialNum_A2,trialNum_sameB+1)) =  1; 
 	%
 	% logistic regression
 	% for stimOFF
